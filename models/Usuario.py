@@ -6,7 +6,8 @@ class Usuario(db.Model):
     nome = db.Column(db.String(100))
     email = db.Column(db.String(100))
     senha = db.Column(db.String(100))
-    
+   
+
     def __init__(self, nome, email, senha):
         self.nome = nome
         self.email = email

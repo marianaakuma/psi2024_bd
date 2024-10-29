@@ -19,3 +19,31 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 migrate = Migrate(app, db)
+
+...
+#codigo anterior o arquivo app.py
+
+@app.route("/teste_insert")
+def teste_insert():
+    u = Usuario("mariana", "mariana@gmail.com", "123456")
+    db.session.add(u)
+    db.session.commit()
+    return 'Dados inseridos com sucesso'
+
+...
+#codigo anterior o arquivo app.py
+
+@app.route("/teste_delete")
+def teste_delete():		
+    u = Usuario.query.get(1)
+    db.session.delete(u)
+    db.session.commit()
+    return 'Dados excluídos com sucesso'
+
+
+@app.route("/teste_select")
+def teste_select():
+    u = Usuario.query.all()
+    print(u)
+    u = Usuario.query.get(1)
+    return u.nome
